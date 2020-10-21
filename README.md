@@ -17,7 +17,7 @@ Foram usadas essa tecnologias:
 ## ***</>*** Como usar o código?
 1. Instale o **Yarn** em seu computador
 1. Instale o **NodeJs** na versão >= 12.0
-1. Clone este repositório `git clone https://github.com/Alessandro1979-itac/NLW-3---HAPPY`
+1. Clone este repositório `git clone https://github.com/Alessandro1979-itac/NLW3-Happy.git`
 
 ### ⚙️ Backend
 1. Acesse a pasta *backend* e dê o comando `yarn install`
