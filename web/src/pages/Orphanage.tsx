@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 
-import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import api from "../services/api";
@@ -39,8 +38,8 @@ export default function Orphanage() {
     useEffect(() => {
         api.get(`/orphanages/${params.id}`).then(response => {
             setOrphanages(response.data)
-        })
-    }, [params.id])
+        });
+    }, [params.id]);
 
     if (!orphanage) {
       return <p>Carregando...</p>
@@ -68,7 +67,7 @@ export default function Orphanage() {
                 type="button">
                   <img src={image.url} alt={orphanage.name} />
                 </button>
-              )
+              );
             })}
           </div>
           
