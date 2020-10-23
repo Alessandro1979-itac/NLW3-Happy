@@ -36,19 +36,19 @@ function OrphanagesMap() {
                 </header>
 
                 <footer>
-                    <strong>Goiânia</strong>
-                    <span>Goiás</span>
+                    <strong>Itacoatiara</strong>
+                    <span>Amazonas</span>
                 </footer>
             </aside>
 
             <Map 
-                center={[-16.7412211,-49.3511868]}
+                center={[-3.131062,-58.430374]}
                 zoom={15}
                 style={{ width: '100%', height: '100%' }}
             >
                 <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
-                {orphanages.map(orphanage => {
+                {orphanages?.map(orphanage => {
                     return (
                         <Marker 
                             position={[ orphanage.latitude, orphanage.longitude ]}
@@ -64,9 +64,7 @@ function OrphanagesMap() {
                         </Marker>
                     )
                 })}
-            </Map>
-
-            
+            </Map>            
 
             <Link to="/orphanage/create" className="create-orphanage">
                 <FiPlus size={32} color="#fff" />
