@@ -2,12 +2,13 @@ import React, { FormEvent, useState, ChangeEvent } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 import { FiPlus } from 'react-icons/fi';
+
 import { useHistory } from 'react-router-dom';
-import api from "../services/api";
+import api from '../services/api';
 
 import '../styles/pages/create-orphanage.css';
-import Sidebar from "../components/Sidebar";
-import mapIcon from "../utils/mapIcon";
+import Sidebar from '../components/Sidebar';
+import mapIcon from '../utils/mapIcon';
 
 export default function CreateOrphanage() {
     const history = useHistory();
@@ -36,6 +37,7 @@ export default function CreateOrphanage() {
         setImages(selectedImages);
 
         const selectedImagesPreview = selectedImages.map(image => URL.createObjectURL(image));
+
         setPreviewImages(selectedImagesPreview);
     }
 
@@ -52,11 +54,12 @@ export default function CreateOrphanage() {
         data.append('instructions', instructions)
         data.append('opening_hours', opening_hours)
         data.append('open_on_weekends', String(open_on_weekends))
-        images.forEach(image => data.append("images", image))
+        images.forEach(image => data.append('images', image))
 
         await api.post('/orphanages', data);
 
         alert('Cadastro realizado com sucesso!!');
+
         history.push('/app');
     }
 
@@ -65,7 +68,7 @@ export default function CreateOrphanage() {
             <Sidebar />
 
             <main>
-                <form className="create-orphanage-from" onSubmit={handleSubmit}>
+                <form className="create-orphanage-form" onSubmit={handleSubmit}>
                     <fieldset>
                         <legend>Dados</legend>
 
@@ -95,7 +98,7 @@ export default function CreateOrphanage() {
                             <label htmlFor="name">Nome</label>
                             <input id="name"
                                 value={name}
-                                onChange={event => setName(event.target.value)}
+                                onChange={(event) => setName(event.target.value)}
                             />
                         </div>
 
@@ -103,13 +106,12 @@ export default function CreateOrphanage() {
                             <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
                             <textarea id="name" maxLength={300}
                                 value={about}
-                                onChange={event => setAbout(event.target.value)}
+                                onChange={(event) => setAbout(event.target.value)}
                             />
                         </div>
 
                         <div className="input-block">
                             <label htmlFor="images">Fotos</label>
-
                             <div className="images-container">
                                 {previewImages.map(image => <img key={image} src={image} alt={image} />)}
                                 <label htmlFor="image[]" className="new-image">
@@ -128,7 +130,7 @@ export default function CreateOrphanage() {
                             <label htmlFor="instructions">Instruções</label>
                             <textarea id="instructions"
                                 value={instructions}
-                                onChange={event => setInstructions(event.target.value)}
+                                onChange={(event) => setInstructions(event.target.value)}
                             />
                         </div>
 
@@ -136,7 +138,7 @@ export default function CreateOrphanage() {
                             <label htmlFor="opening_hours">Horário de Funcionamento</label>
                             <input id="opening_hours"
                                 value={opening_hours}
-                                onChange={event => setOpeningHours(event.target.value)}
+                                onChange={(event) => setOpeningHours(event.target.value)}
                             />
                         </div>
 
